@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SnackbarProvider } from "notistack";
+import theme from './theme';
+import { ThemeProvider } from '@emotion/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <React.StrictMode>
+  <ThemeProvider theme={theme}>
+  <SnackbarProvider
+          maxSnack={1}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}>
+  
     <App />
+  
+  </SnackbarProvider>
+  </ThemeProvider>
   </React.StrictMode>
 );
 

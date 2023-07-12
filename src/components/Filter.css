@@ -1,0 +1,16 @@
+.filter-section{
+    background-color: #ffffff;
+    width:100%;
+    border-radius: 4px;
+    margin: 0.5rem;
+    min-height: 80vh;
+}
+
+/* .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    width: 100%;
+} */
