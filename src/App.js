@@ -1,14 +1,20 @@
 import logo from './logo.svg';
 
-import Header from './components/Header';
+
 import Products from './components/Products';
-import ProductCard from './components/ProductCard';
+
+import Cart from './components/Cart';
+import {Route, Router, Routes, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-     <Products/>
-    
+     
+      <Routes>
+     <Route path='/cart' element={<Cart/>}/>
+     <Route path='/' element={<Products/>}/>
+     </Routes>
+     
     </div>
   );
 }
