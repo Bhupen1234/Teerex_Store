@@ -11,7 +11,7 @@ function App() {
     <div className="App">
      
       <Routes>
-     <Route path='/cart' element={<Cart/>}/>
+     <Route path='/cart' element={<Cart cartProducts={JSON.parse(localStorage.getItem("cartItems"))}/>}/>
      <Route path='/' element={<Products/>}/>
      </Routes>
      

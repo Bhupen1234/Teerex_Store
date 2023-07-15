@@ -10,7 +10,7 @@ import {
   Box
 } from "@mui/material";
 
-const ProductCard = ({product}) => {
+const ProductCard = ({handleAddToCart,product}) => {
   return (
     <Card className="card">
     <CardMedia image={product.imageURL} component="img" alt={product.name} sx={{ height: "60%" }}/>
@@ -19,7 +19,7 @@ const ProductCard = ({product}) => {
     <Typography  className="subtitle"  variant="h6">{product.price} Rs</Typography>
   
     <Box>
-    <Button  variant="contained" fullWidth className="card-button" > <AddShoppingCartOutlined/> {" "}ADD TO CART</Button>
+    <Button  variant="contained" fullWidth className="card-button" onClick={handleAddToCart}> <AddShoppingCartOutlined/>ADD TO CART</Button>
     </Box>
     </CardContent>
     </Card>
