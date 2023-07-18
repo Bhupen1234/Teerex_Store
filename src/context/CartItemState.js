@@ -6,15 +6,9 @@ import React from 'react'
 
 const CartItemState = ({children}) => {
     const getLocalStorageCartData=()=>{
-      let localStorageCartData=localStorage.getItem("cartItems");
-      if(localStorageCartData===null){
-      return  [];
-         
-      }
-      else{
-        
-        return JSON.parse(localStorageCartData)
-      }
+      const localStorageCartData=localStorage.getItem("cartItems");
+      return localStorageCartData ? JSON.parse(localStorageCartData) : [];
+
     }
 
     const [cartItems, setCartItems] = useState(getLocalStorageCartData());
@@ -34,24 +28,33 @@ const CartItemState = ({children}) => {
         return false
       }
 
-    const addProductToCart=(product, options = { preventDuplicate: false })=>{
-  
+    const addProductToCart=(productItem, options = { preventDuplicate: false })=>{
+        let product = {
+          id:productItem.id,
+          imageURL:productItem.imageURL,
+          price:productItem.price,
+          quantity:1,
+          maxQuantity:productItem.quantity,
+          name:productItem.name
+        }
         if (checkItemInCart(product) && options.preventDuplicate) {
-          console.log(true)
+        
           enqueueSnackbar("Item already in Cart.",  { variant: "warning" })
         }
         else{
     
           setCartItems((prevCartItems) => {
-            const updatedCartItems = [...prevCartItems, product];
-
-            localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-          
-        
+            const updatedCartItems = [...prevCartItems, product]; 
+            return updatedCartItems
           });
         
         }  
       }
+
+
+      useEffect(()=>{
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      },[cartItems])
 
 
 
@@ -62,7 +65,7 @@ const CartItemState = ({children}) => {
  
  
   return (
-    <CartItemContext.Provider value={{addProductToCart,cartItems}}>
+    <CartItemContext.Provider value={{addProductToCart,cartItems,setCartItems}}>
      {children}
     </CartItemContext.Provider>
   )

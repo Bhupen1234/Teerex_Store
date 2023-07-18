@@ -12,7 +12,7 @@ import CartItemState from './context/CartItemState';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
+  <CartItemState>
   <React.StrictMode>
      <SnackbarProvider
           maxSnack={1}
@@ -20,7 +20,7 @@ root.render(
             vertical: "bottom",
             horizontal: "center",
           }}>
-    <CartItemState>
+   
      <BrowserRouter>
   <ThemeProvider theme={theme}>
  
@@ -30,9 +30,10 @@ root.render(
  
   </ThemeProvider>
   </BrowserRouter>
-  </CartItemState>
+ 
   </SnackbarProvider>
   </React.StrictMode>
+  </CartItemState>
 );
 
 // If you want to start measuring performance in your app, pass a function
