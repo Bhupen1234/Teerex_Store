@@ -7,22 +7,47 @@ import { SentimentDissatisfied } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState, useEffect, useContext } from "react";
 import CartItemContext from "../context/cartItemContext";
-
+import { useSnackbar } from "notistack";
 const Cart = () => {
   const context = useContext(CartItemContext);
-  const { cartItems, setCartItems } = context;
+  const { cartItems, setCartItems ,deleteFromCart} = context;
+  const { enqueueSnackbar } = useSnackbar();
 
-  const handleIncreaseQty = (itemId) => {
+  //Increase the quantity of Product based on "+" Button Click
+  const handleIncreaseQty = (itemId, quantity, maxQuantity) => {
+    if (quantity < maxQuantity) {
+      setCartItems((prevItems) => {
+        return prevItems.map((item) => {
+          return item.id === itemId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item;
+        });
+      });
+    } else {
+      enqueueSnackbar("Product is OUT OF STOCK", { variant: "info" });
+    }
+  };
+
+   //Decrease the quantity of Product based on "-" Button Click
+  const handleDecreaseQty = (itemId) => {
     setCartItems((prevItems) => {
-      console.log(prevItems);
-     return(prevItems.map((item) => {
-        return (item.id === itemId)
-          ? { ...item, quantity: item.quantity+1 }
-          : item
-      }))
-
+      return prevItems.map((item) => {
+        return item.id === itemId && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item;
+      });
     });
   };
+
+//To evaluate total amount
+  const getTotalAmount=()=>{
+    let sum=0;
+    cartItems.forEach((cartItem)=>{
+      sum+=(cartItem.quantity*cartItem.price)
+    })
+
+    return sum;
+  }
 
   return (
     <>
@@ -90,7 +115,7 @@ const Cart = () => {
                     display="flex"
                     alignSelf="center"
                   >
-                    <IconButton size="small" color="primary">
+                    <IconButton size="small" color="primary" onClick={()=>handleDecreaseQty(cartItem.id)}>
                       <RemoveOutlined />
                     </IconButton>
                     <Box padding="0.5rem" data-testid="item-qty">
@@ -99,7 +124,13 @@ const Cart = () => {
                     <IconButton
                       size="small"
                       color="primary"
-                      onClick={() => handleIncreaseQty(cartItem.id)}
+                      onClick={() =>
+                        handleIncreaseQty(
+                          cartItem.id,
+                          cartItem.quantity,
+                          cartItem.maxQuantity
+                        )
+                      }
                     >
                       <AddOutlined />
                     </IconButton>
@@ -111,7 +142,7 @@ const Cart = () => {
                     display="flex"
                     alignSelf="center"
                   >
-                    <Button variant="outlined" startIcon={<DeleteIcon />}>
+                    <Button variant="outlined" startIcon={<DeleteIcon />} onClick={()=>deleteFromCart(cartItem.id)}>
                       Delete
                     </Button>
                   </Stack>
@@ -133,10 +164,10 @@ const Cart = () => {
                 fontWeight="700"
                 fontSize="1.5rem"
                 alignSelf="center"
-                data-testid="cart-total"
+              
               >
                 {/* Total value  */}
-                400Rs
+                Rs {getTotalAmount()}
               </Box>
             </Box>
           </Box>

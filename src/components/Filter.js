@@ -13,44 +13,59 @@ const Filter = ({isCalledFromModal,handleCategory}) => {
        
         <h4>Color</h4>
                 <div className="check-box">
-                <Checkbox name=""  value={'Red'} onChange={handleCategory}/> <label >Red</label>
+                <Checkbox    value={'color_Red'} onChange={handleCategory}/> <label >Red</label>
                 </div>
                 <div className="check-box">
-                <Checkbox name=""  value={"Blue"}  onChange={handleCategory}/> <label >Blue</label>
+                <Checkbox    value={"color_Blue"}  onChange={handleCategory}/> <label >Blue</label>
                 </div>
                 <div className="check-box">
-                <Checkbox name="" value={"Green"}  onChange={handleCategory}/> <label >Green</label>
+                <Checkbox   value={"color_Green"}  onChange={handleCategory}/> <label >Green</label>
+                </div>
+                <div className="check-box">
+                <Checkbox   value={"color_Black"}  onChange={handleCategory}/> <label >Black</label>
+                </div>
+                <div className="check-box">
+                <Checkbox   value={"color_Purple"}  onChange={handleCategory}/> <label >Purple</label>
+                </div>
+                <div className="check-box">
+                <Checkbox   value={"color_White"}  onChange={handleCategory}/> <label >White</label>
+                </div>
+                <div className="check-box">
+                <Checkbox   value={"color_Grey"}  onChange={handleCategory}/> <label >Grey</label>
+                </div>
+                <div className="check-box">
+                <Checkbox   value={"color_Pink"}  onChange={handleCategory}/> <label >Pink</label>
                 </div>
         
 
         <h4>Gender</h4>
                 <div className="check-box">
-                <Checkbox name=""  value={'Men'}  onChange={handleCategory}/> <label >Male</label>
+                <Checkbox    value={'gender_Men'}  onChange={handleCategory}/> <label >Male</label>
                 </div>
                 <div className="check-box">
-                <Checkbox name=""  value={"Women"}  onChange={handleCategory}/> <label >Female</label>
+                <Checkbox    value={"gender_Women"}  onChange={handleCategory}/> <label >Female</label>
                 </div>
 
         <h4>Price</h4>
                 <div className="check-box">
-                <Checkbox name=""  value={'250'}  onChange={handleCategory}/> <label >0-250Rs</label>
+                <Checkbox    value={'price_0-250'}  onChange={handleCategory}/> <label >0-250Rs</label>
                 </div>
                 <div className="check-box">
-                <Checkbox name=""  value={"251"}  onChange={handleCategory}/> <label >Rs251-450</label>
+                <Checkbox    value={"price_251-450"}  onChange={handleCategory}/> <label >251-450</label>
                 </div>
                 <div className="check-box">
-                <Checkbox name=""  value={"450"} onChange={handleCategory} /> <label >Rs 450</label>
+                <Checkbox    value={"price_450"} onChange={handleCategory} /> <label >450 and Above</label>
                 </div>
         
         <h4>Type</h4>
                 <div className="check-box">
-                <Checkbox name=""  value={'Polo'}  onChange={handleCategory}/> <label >Polo</label>
+                <Checkbox    value={'type_Polo'}  onChange={handleCategory}/> <label >Polo</label>
                 </div>
                 <div className="check-box">
-                <Checkbox name=""  value={"Hoodie"}  onChange={handleCategory} /> <label >Hoodie</label>
+                <Checkbox    value={"type_Hoodie"}  onChange={handleCategory} /> <label >Hoodie</label>
                 </div>
                 <div className="check-box">
-                <Checkbox name=""  value={"Basic"}  onChange={handleCategory}/> <label >Basic</label>
+                <Checkbox    value={"type_Basic"}  onChange={handleCategory}/> <label >Basic</label>
                 </div>
                
         </Box> 

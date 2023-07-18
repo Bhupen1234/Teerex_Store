@@ -51,6 +51,12 @@ const CartItemState = ({children}) => {
         }  
       }
 
+      const deleteFromCart = (productId) => {
+        const updatedCartItems= cartItems.filter((item)=>item.id !==productId)
+
+        setCartItems(updatedCartItems)
+      };
+
 
       useEffect(()=>{
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -65,7 +71,7 @@ const CartItemState = ({children}) => {
  
  
   return (
-    <CartItemContext.Provider value={{addProductToCart,cartItems,setCartItems}}>
+    <CartItemContext.Provider value={{addProductToCart,cartItems,setCartItems,deleteFromCart}}>
      {children}
     </CartItemContext.Provider>
   )
