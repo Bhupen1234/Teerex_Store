@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "./Header";
 import Filter from "./Filter";
 import { Box, TextField, InputAdornment, Grid, Stack ,Typography} from "@mui/material";
@@ -8,9 +8,8 @@ import "./Products.css";
 import ProductCard from "./ProductCard";
 import { useSnackbar } from "notistack";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import Modal from '@mui/material/Modal';
-import { json } from "react-router-dom";
 
+import CartItemContext from "../context/cartItemContext";
 
 const Products = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -20,10 +19,8 @@ const Products = () => {
   const[searchKey,setSearchKey]=useState("") 
   const [cartItems,setCartItems] = useState([])
   
-
-
-
-  
+  const context = useContext(CartItemContext);
+ const  {addProductToCart} = context;
 
   //Make API call to get the products list and store it to display the products
   const performAPICall = async () => {
@@ -142,38 +139,48 @@ const Products = () => {
 
   //Check if Item already in Cart-return Boolean
    
-  const checkItemInCart = (product) =>{
-    let items = JSON.parse(localStorage.getItem("cartItems"))
+  // const checkItemInCart = (product) =>{
+  //   let items = JSON.parse(localStorage.getItem("cartItems"))
 
-    if(items===null){
-      return false
-    }
-    for(let i=0;i<items.length;i++){
-      if(items[i].id===product.id){
-        return true
-      }
-    }
-    return false
-  }
+  //   if(items===null){
+  //     return false
+  //   }
+  //   for(let i=0;i<items.length;i++){
+  //     if(items[i].id===product.id){
+  //       return true
+  //     }
+  //   }
+  //   return false
+  // }
 
-
-
+ 
   //Adding Product to card
 
-  const addProductToCart=(product, options = { preventDuplicate: false })=>{
-    if (checkItemInCart(product) && options.preventDuplicate) {
-      enqueueSnackbar("Item already in Cart.",  { variant: "warning" })
-    }
-    else{
-      cartItems.push(product);
-      localStorage.setItem('cartItems',JSON.stringify(cartItems))
-    }
+  // const addProductToCart=(product, options = { preventDuplicate: false })=>{
+  
+  //   if (checkItemInCart(product) && options.preventDuplicate) {
+  //     enqueueSnackbar("Item already in Cart.",  { variant: "warning" })
+  //   }
+  //   else{
 
-   console.log(localStorage.getItem('cartItems'))
-  }
+  //    setCartItems((prevState)=>[...prevState,product])
+     
+      
+      
+    
+      
+  //   }
+
+  
+  // }
+
+  // useEffect(()=>{
+  //   localStorage.setItem('cartItems',JSON.stringify(cartItems))
+  // },[cartItems])
 
 
   useEffect(() => {
+   
     performAPICall();
 
   

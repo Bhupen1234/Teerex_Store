@@ -7,25 +7,31 @@ import { SnackbarProvider } from "notistack";
 import theme from './theme';
 import { ThemeProvider } from '@emotion/react';
 import { BrowserRouter } from "react-router-dom";
+import CartItemState from './context/CartItemState';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
-     <BrowserRouter>
-  <ThemeProvider theme={theme}>
-  <SnackbarProvider
+     <SnackbarProvider
           maxSnack={1}
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "center",
           }}>
+    <CartItemState>
+     <BrowserRouter>
+  <ThemeProvider theme={theme}>
+ 
   
     <App />
   
-  </SnackbarProvider>
+ 
   </ThemeProvider>
   </BrowserRouter>
+  </CartItemState>
+  </SnackbarProvider>
   </React.StrictMode>
 );
 

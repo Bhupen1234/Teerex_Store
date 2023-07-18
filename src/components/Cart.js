@@ -5,9 +5,8 @@ import { Button, IconButton, Stack, Card,Typography } from "@mui/material";
 import { AddOutlined, RemoveOutlined } from "@mui/icons-material";
 import { SentimentDissatisfied } from "@mui/icons-material";
 import DeleteIcon from '@mui/icons-material/Delete';
-
-
-
+import { useState,useEffect,useContext } from "react";
+import CartItemContext from "../context/cartItemContext";
 
 
 
@@ -29,38 +28,46 @@ const ItemQuantity = ({value }) => {
 
 
 
-const Cart = ({cartProducts}) => {
+const Cart = () => {
+  
+  
+   const context = useContext(CartItemContext);
+ const  {cartItems} = context;
+  
+
+
   return (
     <>
       <Header />
 
       <Box  paddingX="20px" >
         <h3>Shopping Cart</h3>
-        { cartProducts===null?
+        { cartItems===null|| cartItems.length===0?
 
        ( <Box className="empty">
         <SentimentDissatisfied />
                       <Typography sx={{ fontWeight: "bold" }}>
-                        No products found
+                        Your Cart is Empty! 
                       </Typography>
         </Box>
        )
 
        :
+     
         (<Box className="cart"  sx={{width:{sm:"90%",xs:"90%",md:"50%"}}}>
-          {cartProducts.map((cartProduct) => {
+          {cartItems.map((cartItem) => {
             return (
-              <Card key={cartProduct.id}
+              <Card key={cartItem.id}
                 className="cart_item"
                 sx={{ display: "flex", alignItems: "flex-start" ,justifyContent:"space-between",width:"100%",backgroundColor:"#E9F5E1",margin:"15px"}}
                 marginLeft="10px"
               >
                 <Box className="image_container" height="6.6rem" width="6.6rem" display="flex" alignSelf="center" paddingLeft="3px">
                   <img
-                    // Add product image
-                    src={cartProduct.imageURL}
-                    // Add product name as alt eext
-                    alt={cartProduct.name}
+                  
+                    src={cartItem.imageURL}
+                 
+                    alt={cartItem.name}
                     width="100%"
                     height="100%"
                   />
@@ -72,8 +79,8 @@ const Cart = ({cartProducts}) => {
                   justifyContent="space-between"
                   paddingLeft="10px"
                 >
-                  <h4>{cartProduct.name}</h4>
-                  <h5>Rs {cartProduct.price}</h5>
+                  <h4>{cartItem.name}</h4>
+                  <h5>Rs {cartItem.price}</h5>
                 </Box>
 
                 <ItemQuantity value={1}/>
