@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import React from "react";
 import "./Filter.css";
@@ -6,7 +6,7 @@ const Filter = ({isCalledFromModal,handleCategory}) => {
 
   return (
     
-      <Box className={ isCalledFromModal? "filter-section-dekstop" : "filter-section-mobile" }>
+      <Paper className={ isCalledFromModal? "filter-section-dekstop" : "filter-section-mobile" }>
 
         <Box className="filter-body">
         
@@ -69,18 +69,9 @@ const Filter = ({isCalledFromModal,handleCategory}) => {
                 </div>
                
         </Box> 
-
-
-        
-
-
-        
-         
-
-        
           
         
-      </Box>
+      </Paper>
  
   );
 };

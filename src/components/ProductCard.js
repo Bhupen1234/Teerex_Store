@@ -29,10 +29,11 @@ const ProductCard = ({ handleAddToCart, product }) => {
 
         <Box>
           <Button
-            variant="contained"
+           variant="outlined"
             fullWidth
             className="card-button"
             onClick={handleAddToCart}
+            color="primary"
           >
             {" "}
             <AddShoppingCartOutlined />

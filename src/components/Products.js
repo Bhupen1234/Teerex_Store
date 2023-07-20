@@ -85,12 +85,12 @@ const Products = () => {
         .filter((filterItem) => filterItem.startsWith("price_"))
         .map((price) => price.substring(6));
 
-      let result = (colorsInCategory.includes(color) || colorsInCategory.length === 0) &&
+      let isPresent = (colorsInCategory.includes(color) || colorsInCategory.length === 0) &&
         (genderInCategory.includes(gender) || genderInCategory.length === 0) &&
         (typeInCategory.includes(type) || typeInCategory.length === 0) &&
         (priceInCategory.includes(priceRange) || priceInCategory.length === 0);
 
-        return result;
+        return isPresent;
     } else {
       const { name, type, color } = product;
       let result = filterItems.every((filterItem) => {
@@ -148,8 +148,8 @@ const Products = () => {
     if (checked) {
       setCategory([...category, value]);
     } else {
-      // const checkedCategory= category.filter((value)=>value!=event.target.value);
-      setCategory(category.filter((fvalue) => fvalue !== value));
+      
+      setCategory(category.filter((filtvalue) => filtvalue !== value));
     }
   };
 
@@ -173,19 +173,15 @@ const Products = () => {
   return (
     <div>
       <Header />
-      <Grid container className="mainContainer">
+      <Grid container >
         <Grid
           item
           sm={4}
           sx={{ padding: "22px" }}
-          className="filterBackground "
+          className="filterBackground filter_container"
         >
-           <Box className="filter_container">
+          
            <Filter handleCategory={(e) => handleCategory(e)} />
-           </Box>
-        
-        
-         
           <Drawer
             anchor="left"
             open={openDrawer}

@@ -1,14 +1,15 @@
 import React from "react";
 import Header from "./Header";
 import { Box } from "@mui/material";
-import { Button, IconButton, Stack, Card, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Card } from "@mui/material";
 import { AddOutlined, RemoveOutlined } from "@mui/icons-material";
-import { SentimentDissatisfied } from "@mui/icons-material";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import {  useContext } from "react";
 import CartItemContext from "../context/cartItemContext";
 import { useSnackbar } from "notistack";
 
+import { EmptyCart } from "./EmptyCart";
 
 const CartProduct = ({cartItem,handleDecreaseQty,handleIncreaseQty,deleteFromCart}) => {
   return (
@@ -143,7 +144,19 @@ const Cart = () => {
   }
 
 
- 
+ if(cartItems.length===0){
+  return(
+
+     <>
+      <Header />
+    
+      <EmptyCart />
+    
+     
+     </>
+    
+  )
+ }
   
   
   
@@ -157,14 +170,7 @@ const Cart = () => {
       <Box paddingX="20px">
         {console.log(cartItems)}
         <h3 >Shopping Cart</h3>
-        {cartItems === null || cartItems.length === 0 ? (
-          <Box className="empty">
-            <SentimentDissatisfied />
-            <Typography sx={{ fontWeight: "bold" }}>
-              Your Cart is Empty!
-            </Typography>
-          </Box>
-        ) : (
+        
           <Box
             className="cart"
             sx={{ width: { sm: "90%", xs: "90%", md: "50%" } }}
@@ -199,7 +205,7 @@ const Cart = () => {
               </Box>
             </Box>
           </Box>
-        )}
+        
       </Box>
     </>
   );

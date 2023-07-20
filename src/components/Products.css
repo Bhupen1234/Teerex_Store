@@ -2,6 +2,13 @@
     background-color: #949494;
     padding-left: 16px;
     padding-top: 16px;
+
+
+    position: sticky;
+    top: 5vh;
+    height: 100vh;
+   
+    overflow-y: auto
     
    
 }
@@ -13,6 +20,7 @@
 
   
 }
+
 
 
 
@@ -33,4 +41,5 @@
   
     cursor: pointer;
 }
+
 

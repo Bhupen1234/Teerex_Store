@@ -3,7 +3,8 @@
     width:100%;
     border-radius: 4px;
     margin: 0.5rem;
-    height: 80vh;
+   
+    
 }
 .filter-section-mobile{
     background-color: #ffffff;
@@ -23,9 +24,10 @@
 
 .filter-body{
     padding: 22px;
-    font-family: "Lato"
+    font-family: "Lato";
 
-    
+  
+ 
 }
 
 .check-box{
