@@ -19,7 +19,7 @@ import {
   Drawer,
   
 } from "@mui/material";
-import CircularProgress from '@mui/material/CircularProgress';
+
 
 import CartItemContext from "../context/cartItemContext";
 
@@ -29,7 +29,7 @@ const Products = () => {
   const [category, setCategory] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [loader,setLoader] =useState(false)
+ 
   const [searchKey, setSearchKey] = useState("");
 
   const context = useContext(CartItemContext);
@@ -37,20 +37,24 @@ const Products = () => {
 
   //Make API call to get the products list and store it to display the products
   const performAPICall = async () => {
-    setLoader(true)
+   
+   
     try {
+       
       const response = await axios.get(
         "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
       );
       setProducts(response.data);
       setFilteredProducts(response.data);
-      setLoader(false)
+     
     } catch (error) {
 
       enqueueSnackbar(error.message, { variant: "error" });
-      setLoader(false);
+     
     }
   };
+
+  
 
   const checkPriceRange = (price) => {
     if (price >= 0 && price <= 250) {
@@ -102,7 +106,6 @@ const Products = () => {
   };
 
   //Filter Products based on search query
-
   const filterProductsBySearch = (keys) => {
     if (keys.trim(" ") === "") {
       setFilteredProducts(products);
@@ -118,7 +121,6 @@ const Products = () => {
   };
 
   //Filter the Products on Category Click
-
   const filterProductsByFilter = (category) => {
     if (category.length === 0) {
       setFilteredProducts(products);
@@ -134,15 +136,13 @@ const Products = () => {
   };
 
   //search operation --> whenever the user types in search box
-
-  
   const performSearch = (e) => {
     setSearchKey(e.target.value);
     filterProductsBySearch(e.target.value);
   };
 
-  //By checking checkbox in Filter Component handleCategory will run
 
+  //By checking checkbox in Filter Component handleCategory will run
   const handleCategory = (event) => {
     const { value, checked } = event.target;
     if (checked) {
@@ -154,40 +154,48 @@ const Products = () => {
   };
 
   const toggleDrawer = (open) => {
-    console.log(open);
+  
     setOpenDrawer(open);
   };
 
   useEffect(() => {
     performAPICall();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     // console.log(category)
     filterProductsByFilter(category);
 
-    // @babel/plugin-proposal-private-property-in-object
+  // eslint-disable-next-line
   }, [category]);
+
   return (
     <div>
       <Header />
-      <Grid container>
+      <Grid container className="mainContainer">
         <Grid
           item
           sm={4}
           sx={{ padding: "22px" }}
-          className="filterBackground filter_container"
+          className="filterBackground "
         >
-          <Filter handleCategory={(e) => handleCategory(e)} />
+           <Box className="filter_container">
+           <Filter handleCategory={(e) => handleCategory(e)} />
+           </Box>
+        
+        
+         
           <Drawer
             anchor="left"
             open={openDrawer}
             onClose={() => toggleDrawer(false)}
+            sx={{ display: { xs: "block", sm: "none", md: "none" } }}
           >
             <Filter handleCategory={(e) => handleCategory(e)} />
           </Drawer>
         </Grid>
-        <Grid item sm={8} sx={{ padding: "22px" }}>
+        <Grid item sm={8} sx={{ padding: "22px" }} className="productsBackground">
           <Stack
             direction="row"
             justifyContent="space-between"
@@ -220,7 +228,7 @@ const Products = () => {
             </Box>
           </Stack>
           {
-          loader? (<CircularProgress/>) :(
+          
           filteredProducts.length !== 0 ? (
             <Grid container>
               {filteredProducts.map((product) => {
@@ -238,7 +246,7 @@ const Products = () => {
                       handleAddToCart={() =>
                         addProductToCart(product, { preventDuplicate: true })
                       }
-                    />
+                     />
                   </Grid>
                 );
               })}
@@ -252,7 +260,7 @@ const Products = () => {
                 </Typography>
               </Box>
             </>
-          ))}
+          )}
         </Grid>
       </Grid>
     </div>

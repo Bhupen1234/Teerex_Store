@@ -1,6 +1,5 @@
 import { Button, Typography } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import React, { useContext } from "react";
 import "./Header.css";
@@ -41,7 +40,7 @@ const Header = () => {
           }}
           variant={window.location.pathname === "/cart" ? "contained" : "text"}
         >
-           <Badge color="success" badgeContent={cartItems.length}>
+           <Badge color="secondary" badgeContent={cartItems.length}>
           <ShoppingCartOutlinedIcon fontSize="large" />
           </Badge>
         </Button>

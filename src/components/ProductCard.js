@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { AddShoppingCartOutlined } from "@mui/icons-material";
 import {
   Button,
@@ -7,24 +7,22 @@ import {
   CardMedia,
   Typography,
   Box,
-  Stack,
+
 } from "@mui/material";
-import CartItemContext from "../context/cartItemContext";
+
 
 const ProductCard = ({ handleAddToCart, product }) => {
-  const context = useContext(CartItemContext);
-  const { cartItems } = context;
-
+ 
   return (
-    <Card className="card">
+    <Card className="card" height="100%">
       <CardMedia
         image={product.imageURL}
         component="img"
         alt={product.name}
-        sx={{ height: "60%" }}
+        sx={{ height: "80%" }}
       />
       <CardContent>
-        <Typography variant="h6">{product.name}</Typography>
+        <Typography variant="h6">{product.name} for {product.gender}</Typography>
         <Typography className="subtitle" variant="h6">
           {product.price} Rs
         </Typography>
