@@ -4,7 +4,6 @@ import Filter from "./Filter";
 import {
   Box,
   TextField,
-  InputAdornment,
   Grid,
   Stack,
   Typography,
@@ -29,8 +28,8 @@ const Products = () => {
   const [category, setCategory] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
- 
   const [searchKey, setSearchKey] = useState("");
+ 
 
   const context = useContext(CartItemContext);
   const { addProductToCart } = context;
@@ -92,12 +91,13 @@ const Products = () => {
 
         return isPresent;
     } else {
-      const { name, type, color } = product;
+      const { name, type, color,gender } = product;
       let result = filterItems.every((filterItem) => {
         return (
           name.toLowerCase().includes(filterItem) ||
           type.toLowerCase().includes(filterItem) ||
-          color.toLowerCase().includes(filterItem)
+          color.toLowerCase().includes(filterItem) ||
+          gender.toLowerCase().includes(filterItem)
         );
       });
 
@@ -112,7 +112,7 @@ const Products = () => {
     } else {
       const searchkeys = keys.toLowerCase().split(" ");
 
-      const filtereddata = filteredProducts.filter((product) => {
+      const filtereddata = products.filter((product) => {
         return isProductPresent(product, searchkeys);
       });
 
@@ -130,7 +130,7 @@ const Products = () => {
         return isProductPresent(product, category, isFilterFunction);
       });
 
-      console.log(filtereddata);
+      
       setFilteredProducts(filtereddata);
     }
   };
@@ -147,9 +147,11 @@ const Products = () => {
     const { value, checked } = event.target;
     if (checked) {
       setCategory([...category, value]);
+     
     } else {
       
       setCategory(category.filter((filtvalue) => filtvalue !== value));
+    
     }
   };
 
@@ -164,7 +166,7 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-    // console.log(category)
+   
     filterProductsByFilter(category);
 
   // eslint-disable-next-line
@@ -176,7 +178,7 @@ const Products = () => {
       <Grid container >
         <Grid
           item
-          sm={4}
+          sm={3}
           sx={{ padding: "22px" }}
           className="filterBackground filter_container"
         >
@@ -191,7 +193,7 @@ const Products = () => {
             <Filter handleCategory={(e) => handleCategory(e)} />
           </Drawer>
         </Grid>
-        <Grid item sm={8} sx={{ padding: "22px" }} className="productsBackground">
+        <Grid item sm={9} sx={{ padding: "22px" }} className="productsBackground">
           <Stack
             direction="row"
             justifyContent="space-between"
@@ -202,9 +204,9 @@ const Products = () => {
               InputProps={{
                 className: "search",
                 endAdornment: (
-                  <InputAdornment position="end">
+                 
                     <Search color="primary" />
-                  </InputAdornment>
+                  
                 ),
               }}
               placeholder="Search for Products/Colour/Type"
@@ -240,7 +242,7 @@ const Products = () => {
                     <ProductCard
                       product={product}
                       handleAddToCart={() =>
-                        addProductToCart(product, { preventDuplicate: true })
+                        addProductToCart(product)
                       }
                      />
                   </Grid>

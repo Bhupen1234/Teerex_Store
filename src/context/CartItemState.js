@@ -12,23 +12,11 @@ const CartItemState = ({children}) => {
     }
 
     const [cartItems, setCartItems] = useState(getLocalStorageCartData());
+   
     const { enqueueSnackbar } = useSnackbar();
-
-    const checkItemInCart = (product) =>{
-        let items = JSON.parse(localStorage.getItem("cartItems"))
-    
-        if(items===null){
-          return false
-        }
-        for(let i=0;i<items.length;i++){
-          if(items[i].id===product.id){
-            return true
-          }
-        }
-        return false
-      }
-
-    const addProductToCart=(productItem, options = { preventDuplicate: false })=>{
+   
+    //Adding Product to Cart
+    const addProductToCart=(productItem)=>{
         let product = {
           id:productItem.id,
           imageURL:productItem.imageURL,
@@ -37,20 +25,23 @@ const CartItemState = ({children}) => {
           maxQuantity:productItem.quantity,
           name:productItem.name
         }
-        if (checkItemInCart(product) && options.preventDuplicate) {
-        
-          enqueueSnackbar("Item already in Cart.",  { variant: "warning" })
+        if(product.maxQuantity===0){
+           enqueueSnackbar("Product is OUT OF STOCK",{variant:"warning"})
         }
-        else{
+       else{
+        setCartItems((prevCartItems) => {
+          const updatedCartItems = [...prevCartItems, product]; 
+          return updatedCartItems
+        });
+       }
     
-          setCartItems((prevCartItems) => {
-            const updatedCartItems = [...prevCartItems, product]; 
-            return updatedCartItems
-          });
+          
         
-        }  
+         
       }
 
+
+      //Deleting Product from cart
       const deleteFromCart = (productId) => {
         const updatedCartItems= cartItems.filter((item)=>item.id !==productId)
 
@@ -64,10 +55,6 @@ const CartItemState = ({children}) => {
 
 
 
-    //   const removeFromCart = (productId) => {
-    //     // Remove product from cart logic
-    //     setCartItems(cartItems.filter(item => item.id !== productId));
-    //   };
  
  
   return (

@@ -2,8 +2,8 @@
 import Products from './components/Products';
 
 import Cart from './components/Cart';
-import {Route, Router, Routes, Switch } from "react-router-dom";
-import CartItemState from './context/CartItemState';
+import {Route, Routes } from "react-router-dom";
+
 
 
 

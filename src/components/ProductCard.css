@@ -1,11 +1,11 @@
-.card {
+.card{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 22px;
-    
+
 }
+
 
 .card-actions {
     margin-bottom: 1rem;
@@ -18,4 +18,13 @@
 
 .subtitle{
     font-weight: bold;
+}
+
+
+.outofstock{
+    color: red;
+}
+
+.instock, .outofstock{
+    font-weight: 600;
 }

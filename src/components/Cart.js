@@ -25,8 +25,8 @@ const CartProduct = ({cartItem,handleDecreaseQty,handleIncreaseQty,deleteFromCar
       margin: "15px",
       flexDirection: { xs: "column", sm: "row", md: "row" } 
     }}
-    marginLeft="10px"
-    marginTop="10px"
+  
+    elevation={3}
   >
     <Box
       className="image_container"
@@ -67,7 +67,7 @@ const CartProduct = ({cartItem,handleDecreaseQty,handleIncreaseQty,deleteFromCar
       <IconButton size="small" color="primary" onClick={()=>handleDecreaseQty(cartItem.id)}>
         <RemoveOutlined />
       </IconButton>
-      <Box padding="0.5rem" data-testid="item-qty">
+      <Box padding="0.4rem" >
         {cartItem.quantity}
       </Box>
       <IconButton
@@ -148,27 +148,18 @@ const Cart = () => {
   return(
 
      <>
-      <Header />
-    
+      <Header/>
       <EmptyCart />
-    
-     
      </>
     
   )
  }
-  
-  
-  
-
- 
 
   return (
     <>
       <Header />
-
       <Box paddingX="20px">
-        {console.log(cartItems)}
+        
         <h3 >Shopping Cart</h3>
         
           <Box
@@ -177,7 +168,7 @@ const Cart = () => {
           >
             {cartItems.map((cartItem) => {
               return (
-               <CartProduct cartItem={cartItem} handleDecreaseQty={handleDecreaseQty} handleIncreaseQty={handleIncreaseQty} deleteFromCart={deleteFromCart}/>
+               <CartProduct cartItem={cartItem} handleDecreaseQty={handleDecreaseQty} handleIncreaseQty={handleIncreaseQty} deleteFromCart={deleteFromCart} key={cartItem.id}/>
                 );
             })}
            <hr/>
