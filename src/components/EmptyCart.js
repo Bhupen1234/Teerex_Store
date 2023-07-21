@@ -18,7 +18,7 @@ export const EmptyCart = () => {
               cy="326.63"
               fill="none"
               stroke="#ffcd52"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               rx="19.68"
               ry="34.1"
             ></ellipse>
@@ -47,8 +47,8 @@ export const EmptyCart = () => {
             <path
               fill="none"
               stroke="#ffcd52"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M456.21 360.73v-51.14M456.21 329.62l7.97-9.11M456.21 340.5l11.49-13.13M456.21 351.72l11.86-13.57M456.21 329.65l-9.66-11.06M456.21 340.52l-11.86-13.56M456.21 351.74l-11.86-13.56"
             ></path>
             <ellipse
@@ -56,15 +56,15 @@ export const EmptyCart = () => {
               cy="305.95"
               fill="none"
               stroke="#008ef8"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               rx="19.68"
               ry="34.1"
             ></ellipse>
             <path
               fill="none"
               stroke="#008ef8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M481.05 288.91V360.87M481.05 308.94l9.64-11.03M481.05 319.82l11.86-13.56M481.05 331.03l11.86-13.56M481.05 308.96l-9.67-11.05M481.05 319.84l-11.86-13.56M481.05 331.06l-11.86-13.57"
             ></path>
             <ellipse
@@ -72,23 +72,23 @@ export const EmptyCart = () => {
               cy="314.46"
               fill="none"
               stroke="#ff5061"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               rx="19.68"
               ry="34.1"
             ></ellipse>
             <path
               fill="none"
               stroke="#ff5061"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M425.93 297.42v63.45M425.93 317.45l9.65-11.03M425.93 328.33l11.86-13.56M425.93 339.54l11.86-13.56M425.93 317.47l-9.66-11.05M425.93 328.35l-11.86-13.56M425.93 339.56 414.07 326"
             ></path>
             <path
               fill="none"
               stroke="#545454"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M25.26 360.87h467.65"
             ></path>
             <rect
@@ -107,8 +107,8 @@ export const EmptyCart = () => {
               y="174.59"
               fill="none"
               stroke="#008ef8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               rx="13"
               transform="rotate(45 91.215 231.752)"
             ></rect>
@@ -187,8 +187,8 @@ export const EmptyCart = () => {
             <path
               fill="none"
               stroke="#63717c"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m209.91 159.13 21.73 8.49s-3.46 19.52-15.38 15.95-6.35-24.44-6.35-24.44Z"
             ></path>
             <path
@@ -202,8 +202,8 @@ export const EmptyCart = () => {
             <path
               fill="none"
               stroke="#63717c"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m239.54 171 16 14.32s-9.27 15.74-18.41 8.82 2.41-23.14 2.41-23.14Z"
             ></path>
             <path
@@ -241,15 +241,15 @@ export const EmptyCart = () => {
             <path
               fill="none"
               stroke="#008ef8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m381 118.73-88.92-19.15a7.46 7.46 0 0 1-5.89-7.29v-41.1a7.46 7.46 0 0 1 7.46-7.46h88.87a7.46 7.46 0 0 1 7.48 7.46v60.25a7.45 7.45 0 0 1-9 7.29Z"
             ></path>
             <path
               fill="none"
               stroke="#008ef8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m294.51 100.1 3.49 9.75 15.71-5.61-19.2-4.14z"
             ></path>
             <path
