@@ -189,6 +189,7 @@ const Products = () => {
             open={openDrawer}
             onClose={() => toggleDrawer(false)}
             sx={{ display: { xs: "block", sm: "none", md: "none" } }}
+            handleCategory={(e) => handleCategory(e)} 
           >
             <Filter handleCategory={(e) => handleCategory(e)} />
           </Drawer>
